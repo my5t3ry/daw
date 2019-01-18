@@ -15,6 +15,7 @@
 <meta name="theme-color" content="#3a5158"/>
 <link rel="manifest" href="manifest.json"/>
 <link rel="shortcut icon" href="assets/favicon.png"/>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Oswald|Inconsolata|Unica+One">
 <style>
 :root {
 	--gsuiMixerChannel-bg: tomato;
@@ -220,6 +221,8 @@
 	transform: scale( 2 );
 }
 :root {
+	--gsuiBlocksManager-font: 12px sans-serif;
+	--gsuiBlocksManager-number-font: 12px monospace;
 	--gsuiBlocksManager-grid-bg: dodgerblue;
 	--gsuiBlocksManager-borderColor: yellow;
 	--gsuiBlocksManager-side-bgColor: indianred;
@@ -235,6 +238,7 @@
 	min-width: 68px;
 	max-width: 104px;
 	width: 104px;
+	font: var( --gsuiBlocksManager-font );
 	background-color: var( --gsuiBlocksManager-side-bgColor );
 }
 .gsuiBlocksManager-sidePanel .gsui-opacityHover {
@@ -270,16 +274,15 @@
 	align-items: center;
 	padding: 4px;
 	border-radius: 4px;
-	font-size: 0px;
+	font: var( --gsuiBlocksManager-number-font );
 }
 .gsuiBlocksManager-magnetValue {
-	font-size: 11px;
 	white-space: nowrap;
 	margin-right: 6px;
 }
 .gsuiBlocksManager-magnet::after {
 	content: "\f076";
-	font: 16px "FontAwesome";
+	font-family: "FontAwesome";
 	opacity: .7;
 }
 
@@ -471,6 +474,7 @@
 	--gsuiDragline-dotSize: 10px;
 	--gsuiDragline-dotRad: 2px;
 	--gsuiDragline-lineSize: 3px;
+	--gsuiSliderGroup-scale-font: var( --gsuiBlocksManager-number-font );
 }
 .gsuiPianoroll:focus {
 	outline: 1px solid var( --gsuiBlocksManager-blockColor );
@@ -499,6 +503,7 @@
 .gsuiPianoroll-slidersSelect {
 	margin: auto;
 	color: inherit;
+	font: inherit;
 	border: 0;
 	background-color: var( --gsuiBlocksManager-side-bgColor );
 }
@@ -656,16 +661,22 @@
 .gsuiKey[data-key="2"] {
 	height: 2em;
 }
+:root {
+	--gsuiOscillator-font: 12px sans-serif;
+	--gsuiOscillator-number-font: 12px monospace;
+}
+
 .gsuiOscillator {
 	display: flex;
+	overflow: hidden;
 	position: relative;
 	box-sizing: border-box;
 	justify-content: space-between;
 	height: 60px;
-	padding: 8px;
-	padding-right: 12px;
+	padding: 6px;
+	padding-right: 8px;
 	color: #ddd;
-	font-family: sans-serif;
+	font: var( --gsuiOscillator-font );
 	background-color: #555;
 	--gsuiSlider-lineBgColor: #444;
 }
@@ -708,8 +719,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	font-size: 10px;
-	font-family: "inconsolata", inherit;
+	font: var( --gsuiOscillator-number-font );
 	color: var( --gsuiSlider-lineColor );
 }
 
@@ -757,9 +767,9 @@
 	border: 0;
 	outline: 0;
 	color: inherit;
-	font-size: 10px;
 	font-weight: bold;
-	text-transform: capitalize;
+	font-size: inherit;
+	font-family: inherit;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: none;
@@ -810,17 +820,16 @@ option.gsuiOscillator-nativeWave {
 
 .gsuiSynthesizer-title {
 	display: block;
-	padding: 2px 8px;
+	padding: 2px 6px 0;
+	font-size: 10px;
 	font-weight: bold;
-	font-size: 11px;
-	color: #666;
+	color: rgba( 255, 255, 255, .2 );
 }
 
 .gsuiSynthesizer-head {
 	display: flex;
-	padding: 2px 12px 2px 9px;
-	padding-right: 12px;
-	font-size: 11px;
+	padding: 0 8px 2px 6px;
+	font-size: 10px;
 	font-weight: bold;
 	text-align: center;
 	color: #888;
@@ -887,7 +896,7 @@ option.gsuiOscillator-nativeWave {
 	display: inline-block;
 	overflow: hidden;
 	width: 0px;
-	content: "\A0New oscillator";
+	content: "\A0new oscillator";
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 16px;
@@ -1060,7 +1069,6 @@ option.gsuiOscillator-nativeWave {
 	overflow: hidden;
 	min-width: var( --min-width );
 	border-radius: var( --radius );
-	font-family: sans-serif;
 	background-color: var( --bg );
 	box-shadow: 0 0 50px #000;
 }
@@ -1101,6 +1109,7 @@ option.gsuiOscillator-nativeWave {
 #gsuipp-btns input {
 	color: #fff;
 	font-weight: bold;
+	font-family: inherit;
 	background-color: var( --btn-bg );
 	cursor: pointer;
 }
@@ -1298,6 +1307,7 @@ option.gsuiOscillator-nativeWave {
 */
 :root {
 	--gsuiTimeline-bg: darkslateblue;
+	--gsuiTimeline-number-font: 14px monospace;
 	--gsuiTimeline-color: yellow;
 	--gsuiTimeline-loop-bg: tomato;
 	--gsuiTimeline-cursor-fill: yellow;
@@ -1307,9 +1317,9 @@ option.gsuiOscillator-nativeWave {
 .gsuiTimeline {
 	position: relative;
 	overflow: hidden;
-	font: 14px monospace;
-	color: var( --gsuiTimeline-color );
 	cursor: default;
+	color: var( --gsuiTimeline-color );
+	font: var( --gsuiTimeline-number-font );
 	background-color: var( --gsuiTimeline-bg );
 }
 
@@ -1412,9 +1422,6 @@ option.gsuiOscillator-nativeWave {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
-}
-.gsuiTimeline-measure {
-	font-weight: bold;
 }
 .gsuiTimeline-step {
 	opacity: .2;
@@ -1525,9 +1532,15 @@ option.gsuiOscillator-nativeWave {
 .gsuiTrack-name:focus::placeholder {
 	color: transparent;
 }
+@font-face { font-family: "FontAwesome";       src: url( "assets/fa-solid-900.woff" ); }
+@font-face { font-family: "FontAwesomeBrands"; src: url( "assets/fa-brands-400.woff" ); }
+
 :root {
 	--app-bg: #555;
-	--monospace: "Inconsolata", "consolas", monospace;
+	--font-default: "Noto Sans", sans-serif;
+	--font-monospace: "Inconsolata", "consolas", monospace;
+	--font-number: "Unica One", var( --font-monospace );
+	--font-oswald: "Oswald", sans-serif;
 	--pan-border: 1px solid #333;
 	--gsuiPanels-bd: 2px solid #222;
 	--gsuiPanels-extendSize: 4px;
@@ -1562,6 +1575,8 @@ option.gsuiOscillator-nativeWave {
 	--gsuiBlocksManager-grid-bg: #456168;
 	--gsuiBlocksManager-borderColor: #333;
 	--gsuiBlocksManager-side-bgColor: #555;
+	--gsuiBlocksManager-font: 12px var( --font-default );
+	--gsuiBlocksManager-number-font: 16px var( --font-number );
 	--gsuiBlocksManager-selection-bgColor: rgba( 189, 38, 38, .4 );
 	--gsuiBlocksManager-selection-borderColor: #f44;
 	--gsuiBlocksManager-blockColor: rgba( 85, 170, 204, .8 );
@@ -1571,9 +1586,15 @@ option.gsuiOscillator-nativeWave {
 	/* ..................................................................... */
 	--gsuiTimeline-bg: #222;
 	--gsuiTimeline-color: #fff;
+	--gsuiTimeline-number-font: 15px var( --font-number );
 	--gsuiTimeline-loop-bg: #656586;
 	--gsuiTimeline-cursor-fill: #fdfd70;
 	--gsuiTimeline-loopBorder-bg: #fff;
+
+	/* gsuiOscillator */
+	/* ..................................................................... */
+	--gsuiOscillator-font: 12px var( --font-default );
+	--gsuiOscillator-number-font: 14px var( --font-number );
 
 	/* gsuiSliderGroup */
 	/* ..................................................................... */
@@ -1649,10 +1670,6 @@ option.gsuiOscillator-nativeWave {
 	--ctrl-toggleplay-bg: #333;
 	--ctrl-clock-unit-opacity: .5;
 }
-@font-face { font-family: "Inconsolata";       src: url( "assets/inconsolata-regular.ttf" ); }
-@font-face { font-family: "Oswald";            src: url( "assets/oswald-regular.ttf" ); }
-@font-face { font-family: "FontAwesome";       src: url( "assets/fa-solid-900.woff" ) format( "woff" ); }
-@font-face { font-family: "FontAwesomeBrands"; src: url( "assets/fa-brands-400.woff" ) format( "woff" ); }
 .icon {
 	position: relative;
 	display: inline-block;
@@ -1746,7 +1763,6 @@ option.gsuiOscillator-nativeWave {
 	right: 0;
 	bottom: 0;
 	color: rgba( 0, 0, 0, .7 );
-	font-family: "Oswald", sans-serif;
 	background-color: #333;
 	transition: .5s opacity;
 }
@@ -1763,7 +1779,7 @@ option.gsuiOscillator-nativeWave {
 
 #loadingTitle {
 	position: relative;
-	font-size: 52px;
+	font: 52px var( --font-oswald );
 }
 #loadingTitleLight {
 	width: 0%;
@@ -1806,7 +1822,7 @@ body {
 	height: 100%;
 	margin: 0;
 	overflow: hidden;
-	font-family: sans-serif;
+	font-family: var( --font-default );
 	background-color: var( --app-bg );
 }
 
@@ -1856,7 +1872,6 @@ a {
 
 .popup a {
 	color: #bbf;
-	font-size: 12px;
 }
 
 .popup-error-msg {
@@ -1883,7 +1898,7 @@ a {
 
 .popup .param-values {
 	flex: 1;
-	font-family: var( --monospace );
+	font-family: var( --font-monospace );
 }
 
 .popup [type="radio"]:checked + label {
@@ -1920,7 +1935,9 @@ a {
 #authPopupContent {
 	width: 340px;
 }
-
+#authPopupContent a {
+	font-size: 12px;
+}
 
 /* #settingsPopupContent ---------------------------------------------------- */
 #settingsPopupContent fieldset:nth-child( 2 ) .param-values {
@@ -2025,8 +2042,13 @@ a {
 }
 
 #aboutPopupContent .title {
-	font-family: "Oswald";
-	font-size: 32px;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+}
+#aboutPopupContent .title > span:first-child {
+	margin-right: 4px;
+	font: 32px var( --font-oswald );
 }
 
 #aboutPopupContent a {
@@ -2132,21 +2154,25 @@ a {
 .panel-body {
 	flex: 1;
 	overflow: auto;
+	position: relative;
 	background-color: #555;
 }
 
 /* ......................................................................... */
 .panel-placeholder {
 	display: none;
-	padding: 16px;
-	padding-bottom: 4px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 	font-size: 12px;
 	color: #fff;
 	opacity: .4;
 }
 .panel-placeholder:only-child {
-	display: block;
+	display: flex;
 }
 #pan-maingrid,
 #pan-pianoroll,
@@ -2207,7 +2233,7 @@ a {
 #headerTitle::before {
 	display: block;
 	content: "GridSound";
-	font-family: "Oswald";
+	font-family: var( --font-oswald );
 }
 #pan-leftside.small #headerTitle::before {
 	content: "GS";
@@ -2341,25 +2367,25 @@ a {
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 4px 6px;
-	font-size: 12px;
-	color: #ddd;
+	padding: 0 6px;
+	height: 28px;
 	background-color: #444;
 }
-.pan-synth-pianoroll .pan-menu::before {
-	font-style: italic;
+.pan-synth-pianoroll .pan-label {
+	font-size: 12px;
 	font-weight: bold;
-	font-size: 11px;
-	text-shadow: 1px 1px 0 #000;
-	opacity: .35;
+	color: rgba( 255, 255, 255, .2 );
 }
 
 .pan-synth-pianoroll .pan-name {
 	margin-left: .75em;
-	padding: 4px 8px;
-	border-radius: 4px;
-	font-family: var( --monospace );
-	cursor: default;
+	padding: 2px 8px;
+	border: 0;
+	color: #ddd;
+	cursor: pointer;
+	border-radius: 3px;
+	font-size: 13px;
+	font-weight: bold;
 	transition: filter .2s;
 }
 .pan-synth-pianoroll .pan-name:empty:before {
@@ -2375,10 +2401,6 @@ a {
 	width: 300px;
 	min-width: 280px;
 	max-width: 340px;
-}
-
-#pan-synth .pan-menu::before {
-	content: "Synthesizer\A0:";
 }
 
 #synthName {
@@ -2400,10 +2422,6 @@ a {
 	height: 400px;
 	max-height: 100%;
 }
-#pan-pianoroll .pan-menu::before {
-	content: "Pattern\A0:";
-}
-
 #pianorollName {
 	background-color: var( --pattern-namebtn-bg );
 }
@@ -2499,7 +2517,7 @@ a {
 }
 #pan-cloud .cmp-loading .cmp-save::before {
 	content: "\f3f4";
-	animation: .5s infinite linear rotate360;
+	animation: .7s infinite linear rotate360;
 }
 .cmp-save:hover {
 	color: var( --cmp-save-bg );
@@ -2512,7 +2530,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: .5em;
+	padding: 6px 6px 4px;
 	overflow: hidden;
 	font-size: 13px;
 	line-height: 1em;
@@ -2548,13 +2566,17 @@ a {
 
 /* -------------------------------------------------------------------------- */
 .cmp-duration {
-	margin-right: 1em;
+	margin-right: 10px;
+}
+.cmp-bpm,
+.cmp-duration {
+	font: 14px var( --font-number );
 }
 .cmp-bpm::before,
 .cmp-duration::before {
 	display: inline-block;
 	width: 1.25em;
-	margin-right: .4em;
+	margin-right: 4px;
 	font-family: "FontAwesome";
 	text-align: center;
 }
@@ -2771,21 +2793,18 @@ a.synth-name {
 	opacity: 1;
 }
 #version {
-	margin-left: .5em;
 	font-size: 18px;
 }
 
 #versionNumber {
 	opacity: .8;
-	font-family: "Inconsolata";
+	font-family: var( --font-number );
 }
 
 #versionCheck {
-	margin-left: .5em;
 	color: #fff;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: sans-serif;
 	opacity: .4;
 	cursor: pointer;
 	transition: .2s opacity;
@@ -2804,7 +2823,7 @@ a.synth-name {
 }
 
 /* -------------------------------------------------------------------------- */
-#version.searching #versionNumber::after { content: "\f3f4"; animation: keyframe-rotate360 .6s linear infinite; }
+#version.searching #versionNumber::after { content: "\f3f4"; animation: .7s linear infinite rotate360; }
 #version.ko #versionNumber::after { content: "\f071"; }
 #version.ok #versionNumber::after { content: "\f00c"; }
 #version #versionNumber::after {
@@ -2813,11 +2832,6 @@ a.synth-name {
 	font-weight: normal;
 	font-family: "FontAwesome";
 	margin-left: 4px;
-}
-
-@keyframes keyframe-rotate360 {
-	  0% { transform: rotate(   0deg ); }
-	100% { transform: rotate( 360deg ); }
 }
 #controls {
 	display: flex;
@@ -2890,25 +2904,25 @@ a.synth-name {
 /* -------------------------------------------------------------------------- */
 #bpm,
 #clock {
-	padding: 0 .3em;
+	padding: 0 8px;
 	align-items: baseline;
 	padding-top: 1px;
-	font-family: var( --monospace );
-	font-size: 30px;
+	font-family: var( --font-number );
+	font-size: 28px;
 	filter: none;
 	color: var( --ctrl-clock-text );
 	background-color: var( --ctrl-clock-bg );
 }
-#clockSec::before { content: ":"; }
-#clockMs::before { content: "."; }
+#clockSec::before { content: ":"; margin: 0 2px; }
+#clockMs::before { content: "."; margin: 0 3px; }
 #clockMs,
 #bpmText::before {
-	font-size: .5em;
+	font-size: 14px;
 	opacity: var( --ctrl-clock-unit-opacity );
 }
 #bpmText::before {
 	content: "bpm";
-	margin-left: .5em;
+	margin-left: 4px;
 }
 #analyser {
 	width: 144px;
@@ -2998,7 +3012,7 @@ a.synth-name {
 	padding-right: .4em;
 	color: var( --history-action-text );
 	font-size: 13px;
-	font-family: var( --monospace );
+	font-family: var( --font-monospace );
 	background-color: var( --history-action-bg );
 	transition: filter .2s;
 }
@@ -3100,7 +3114,7 @@ a.synth-name {
 <div data-panel="pan-history">
 	<div class="panel-title">
 		<span class="icon ico-history"></span>
-		<span>History</span>
+		<span>history</span>
 	</div>
 	<div class="panel-menu">
 		<a id="undo" class="icon ico-undo panel-btn" title="Undo the previous action (Ctrl + Z)"></a
@@ -3111,7 +3125,7 @@ a.synth-name {
 <div data-panel="pan-patterns">
 	<div class="panel-title">
 		<span class="icon ico-synth"></span>
-		<span>Synthesizers</span>
+		<span>synthesizers</span>
 	</div>
 	<div class="panel-menu">
 		<a id="synthNew" class="icon ico-new panel-btn" title="Create a new synthesizer"></a>
@@ -3149,7 +3163,8 @@ a.synth-name {
 <div data-panel="pan-mixer"></div>
 <div data-panel="pan-synth">
 	<div class="pan-menu">
-		<div class="pan-name" id="synthName"></div>
+		<div class="pan-label">synthesizer</div>
+		<button class="pan-name" id="synthName"></button>
 	</div>
 	<div id="synthWrapper">
 		<div id="synthWrapper2"></div>
@@ -3157,7 +3172,8 @@ a.synth-name {
 </div>
 <div data-panel="pan-pianoroll">
 	<div class="pan-menu no-select">
-		<div class="pan-name" id="pianorollName"></div>
+		<div class="pan-label">pattern</div>
+		<button class="pan-name" id="pianorollName"></button>
 	</div>
 	<div id="keysGridWrap"></div>
 	<div id="pianorollBlock" class="no-select"></div>
@@ -3553,7 +3569,7 @@ a.synth-name {
 	<a class="gsuiOscillator-remove" title="Remove the oscillator"></a>
 </div>
 <div id="gsuiSynthesizer-template" class="gsuiSynthesizer">
-	<span class="gsuiSynthesizer-title">Oscillators</span>
+	<span class="gsuiSynthesizer-title">oscillators</span>
 	<div class="gsuiSynthesizer-head">
 		<div>#</div>
 		<div>wave</div>
@@ -11332,7 +11348,7 @@ gswaPeriodicWaves.forEach( ( w, name ) => (
 ) );
 
 window.DAW = DAW;
-window.VERSION = "0.19.0";
+window.VERSION = "0.19.1";
 
 UIdomInit();
 UIauthInit();
